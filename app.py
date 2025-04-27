@@ -25,7 +25,7 @@ Enter a date to see the predicted traffic volume for that day.
 def load_data():
     """Load and preprocess the traffic volume dataset"""
     try:
-        df = pd.read_csv('C:/Users/kurmi_kwybmge/OneDrive/Desktop/Indiana_university/Spring_2025/DSCI-D590_Time Series/Final_project_app/Metro_Interstate_Traffic_Volume.csv')
+        df = pd.read_csv('Metro_Interstate_Traffic_Volume.csv')
         df['date_time'] = pd.to_datetime(df['date_time'], format="%d-%m-%Y %H:%M")
         return df
     except Exception as e:
