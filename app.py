@@ -185,33 +185,6 @@ def main():
             fig.update_xaxes(tickvals=[0, 1], ticktext=['Non-Holiday', 'Holiday'])
             # Display in Streamlit
             st.plotly_chart(fig)
-            
-            # Traffic by specific holidays
-            st.subheader("Traffic Volume on Individual Holidays")
-
-            # Filter only holiday rows (assuming 'holiday' column contains holiday names or non-null values)
-            holiday_df = df[df['holiday'] != 'None']  # Replace 'None' with actual null representation in your data
-
-            # Group by specific holidays and calculate mean traffic
-            holiday_traffic = holiday_df.groupby('holiday')['traffic_volume'].mean().reset_index()
-
-            # Create interactive bar plot for each holiday
-            fig = px.bar(
-                holiday_traffic,
-                x='holiday',
-                y='traffic_volume',
-                labels={'holiday': 'Holiday', 'traffic_volume': 'Average Traffic Volume'},
-                title="Average Traffic Volume by Specific Holiday",
-                color='holiday'
-            )
-
-            # Customize layout
-            fig.update_layout(showlegend=False, xaxis_tickangle=-45)
-            fig.update_xaxes(categoryorder='total descending')
-
-            # Display in Streamlit
-            st.plotly_chart(fig)
-
 
 
             # Group by weather condition and calculate mean traffic volume
@@ -238,7 +211,7 @@ def main():
             # Prepare data for Prophet
             prophet_data = prepare_prophet_data(df)
             
-            # Train the model (add a loading indicator)
+            # Train the model
             with st.spinner('Training the Prophet model...'):
                 model = train_prophet_model(prophet_data)
             
