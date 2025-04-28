@@ -18,7 +18,7 @@ st.set_page_config(
 st.title("🚗 Traffic Volume Prediction App")
 st.write("""
 This application predicts traffic volume based on historical data. 
-Enter a date to see the predicted traffic volume for that day.
+Enter a date to see the predicted traffic volume for that day on major highway connecting Minneapolis and St. Paul, Minnesota.
 """)
 
 @st.cache_data
